@@ -78,5 +78,43 @@ az role assignment create --assignee testuser01@XBEELZEBUB666Xoutlook.onmicrosof
 
 ---
 
+✅ Task 2: Azure CLI – VM, VNet, Policy, Key Vault, Backup, Alerts
 
+🔹 1. Create Virtual Machine and Virtual Network via CLI
+```bash
+az network vnet create --resource-group AzureLabRG --name MyVNet --subnet-name MySubnet
+
+az vm create --resource-group AzureLabRG --name MyVM --image Ubuntu2204 --vnet-name MyVNet --subnet MySubnet --admin-username azureuser --admin-password P@ssword1234 --publ
+```
+📸 Screenshot: ![VM Created](screenshot/VM.png)
+
+🔹 2. Assign a Policy at Subscription Level
+```bash
+az policy definition list --query "[?displayName=='Audit virtual machines without disaster recovery configured'].id" -o tsv
+```
+
+🔹 3. Key Vault: Create, Store & Retrieve Secret via CLI
+```bash
+az keyvault create --name MyKeyVault --resource-group AzureLabRG --location eastus
+
+az keyvault secret set --vault-name MyKeyVault --name MySecret --value "SuperSecret123"
+
+az keyvault secret show --vault-name MyKeyVault --name MySecret
+```
+
+🔹 4. Schedule Daily VM Backup at 3AM using Vault
+```bash
+az backup vault create --resource-group AzureLabRG --name MyRecoveryVault --location eastus
+
+az backup protection enable-for-vm --vault-name MyRecoveryVault --resource-group AzureLabRG --vm MyVM --policy-name DefaultPolicy
+```
+
+🔹 5. Create Alert Rule for CPU > 80%
+```bash
+az monitor metrics alert create --name HighCPUAlert --resource-group AzureLabRG --scopes /subscriptions/a3b943a8-2d07-4467-939d-31d04a4a8d7c/resourceGroups/AzureLabRG/providers/Microsoft.Compute/virtualMachines/MyVM --condition "avg Percentage CPU > 80" --description "CPU usage alert over 80%" --window-size 5m --evaluation-frequency 1m --action-group ""
+```
+
+✅ Task 2 Complete
+
+---
 
