@@ -62,9 +62,10 @@ az role assignment create --assignee testuser01@XBEELZEBUB666Xoutlook.onmicrosof
     "Microsoft.Resources/subscriptions/resourceGroups/read"
   ],
   "AssignableScopes": [
-    "/subscriptions/<your-subscription-id>"
+    "/subscriptions/a3b943a8-2d07-4467-939d-31d04a4a8d7c"
   ]
 }
+
 ```
 
 ```bash
