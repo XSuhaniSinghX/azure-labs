@@ -22,7 +22,7 @@ az account show --output table
 az ad signed-in-user show --output table
 ```
 
-📸 Screenshot: ![Subscription Info](screenshots/subscription_info.png)
+📸 Screenshot: ![Subscription Info](screenshot/sub.png)
 
 #### 2. Create User and Group
 
@@ -32,7 +32,7 @@ az ad group create --display-name "TestGroup" --mail-nickname "TestGroup"
 az ad user list --output json > users.json
 ```
 
-📸 Screenshot: ![User and Group Created](screenshots/user_group_created.png)
+📸 Screenshot: ![User and Group Created](screenshot/user.png)
 
 #### 3. Get User Object ID and Add to Group
 
@@ -48,7 +48,6 @@ az ad group member add --group "TestGroup" --member-id e210c3b4-fa59-48d7-b8d9-b
 az role assignment create --assignee testuser01@XBEELZEBUB666Xoutlook.onmicrosoft.com --role Reader --scope /subscriptions/<your-subscription-id>
 ```
 
-📸 Screenshot: ![Built-in Role Assigned](screenshots/reader_role_assigned.png)
 
 #### 5. Create and Assign Custom Role
 
@@ -73,7 +72,7 @@ az role definition create --role-definition customRole.json
 az role assignment create --assignee testuser01@XBEELZEBUB666Xoutlook.onmicrosoft.com --role "CustomReader" --scope /subscriptions/<your-subscription-id>
 ```
 
-📸 Screenshot: ![Custom Role Assigned](screenshots/custom_role_assigned.png)
+📸 Screenshot: ![Custom Role Assigned](screenshot/customrole.png)
 
 ### ✅ Task 1 Complete
 
